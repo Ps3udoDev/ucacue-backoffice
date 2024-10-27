@@ -33,8 +33,13 @@ public class WooCommerceService {
 
     public Integer createWooCommerceCategory(Category category) {
         WooCommerceCategoryDTO wooCommerceCategoryDTO = wooCommerceCategoryMapper.toWooCommerceDTO(category);
+        System.out.println("esta es la categoria ques e create"+wooCommerceCategoryDTO);
+        System.out.println("esta es la categoria "+category);
+
+
 
         ResponseEntity<JsonNode> response = wooCommerceClient.createCategory(wooCommerceCategoryDTO);
+        System.out.println("response de create"+response);
         if (response.getStatusCode().is2xxSuccessful()) {
             JsonNode responseBody = response.getBody();
             assert responseBody != null;
@@ -47,6 +52,7 @@ public class WooCommerceService {
 
     public void updateWooCommerceCategory(Integer wooCategoryId, Category category) {
         WooCommerceCategoryDTO wooCommerceCategoryDTO = wooCommerceCategoryMapper.toWooCommerceDTO(category);
+        System.out.println("esta es la categoria ques e mapeo"+wooCommerceCategoryDTO);
         ResponseEntity<JsonNode> response = wooCommerceClient.updateCategoryInWooCommerce(wooCategoryId.longValue(), wooCommerceCategoryDTO);
 
         if (!response.getStatusCode().is2xxSuccessful()) {

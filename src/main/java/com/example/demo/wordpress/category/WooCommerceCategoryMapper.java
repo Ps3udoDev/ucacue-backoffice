@@ -16,17 +16,11 @@ public class WooCommerceCategoryMapper {
         categoryDTO.setSlug(category.getInternalCode());
         categoryDTO.setDescription(category.getDescription());
 
-        List<ImageDTO> images = new ArrayList<>();
-        if(category.getImage() != null && category.getImage().get("id") != null){
+        if (category.getImage() != null) {
             Integer imageId = (Integer) category.getImage().get("id");
             String imageUrl = category.getImage().get("src").toString();
-            images.add(new ImageDTO(imageId, imageUrl));
-        } else if (category.getImage() != null) {
-            String imageUrl = category.getImage().get("src").toString();
-            images.add(new ImageDTO(null, imageUrl));
+            categoryDTO.setImage(new ImageDTO(imageId, imageUrl));
         }
-
-        categoryDTO.setImages(images);
 
         return categoryDTO;
 

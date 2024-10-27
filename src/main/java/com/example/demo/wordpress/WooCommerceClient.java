@@ -66,6 +66,7 @@ public class WooCommerceClient {
         HttpEntity<WooCommerceCategoryDTO> entity = new HttpEntity<>(wooCommerceCategoryDTO, createHeaders());
 
         ResponseEntity<JsonNode> response = restTemplate.exchange(url, HttpMethod.PUT, entity, JsonNode.class);
+        System.out.println("this is response"+response);
         validateResponse(response);
         return response;
     }

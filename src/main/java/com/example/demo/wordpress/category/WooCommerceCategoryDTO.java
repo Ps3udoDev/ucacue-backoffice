@@ -14,5 +14,5 @@ public class WooCommerceCategoryDTO {
     private String name;
     private String slug;
     private String description;
-    private List<ImageDTO> images;
+    private ImageDTO image;
 }
